@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Press+Start+2P&display=swap');
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #ffc8dd 0, #1a1a2e 55%);
+  font-family: 'Poppins', sans-serif;
+  color: white;
+}
+
+/* layout window */
+
+.screen {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.window {
+  max-width: 900px;
+  width: 100%;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(255, 182, 193, 0.6);
+}
+
+/* title bar */
+
+.titlebar {
+  background: linear-gradient(90deg, #a0c4ff, #ffc8dd, #bde0fe);
+  padding: 10px 16px;
+  font-family: 'Press Start 2P', cursive;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #1d3557;
+  font-size: 10px;
+}
+
+.title {
+  letter-spacing: 1px;
+}
+
+.buttons span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 6px;
+}
+
+.red { background: #ff595e; }
+.yellow { background: #ffca3a; }
+.green { background: #8ac926; }
+
+/* content */
+
+.content {
+  padding: 30px;
+  text-align: center;
+  color: #222;
+}
+
+h1 {
+  font-family: 'Press Start 2P', cursive;
+  color: #4361ee;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.content p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* SIMPLE CHOCOLATE CAKE */
+
+.cake {
+  position: relative;
+  width: 220px;
+  height: 190px;
+  margin: 30px auto 10px;
+}
+
+/* plate */
+
+.cake-plate {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 190px;
+  height: 18px;
+  background: #e0ebff;
+  border-radius: 40px;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* shadow */
+
+.cake-shadow {
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
+  height: 18px;
+  background: radial-gradient(circle, rgba(0,0,0,0.35), transparent 70%);
+  filter: blur(4px);
+}
+
+/* main chocolate body */
+
+.cake-body {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 170px;
+  height: 80px;
+  background: #5b3422;
+  border-radius: 18px 18px 26px 26px;
+  box-shadow: 0 4px 0 rgba(0,0,0,0.35);
+}
+
+/* middle filling line */
+
+.cake-middle {
+  position: absolute;
+  bottom: 58px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
+  height: 10px;
+  background: #70412a;
+  border-radius: 999px;
+}
+
+/* top ganache */
+
+.cake-top {
+  position: absolute;
+  bottom: 88px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
+  height: 36px;
+  background: linear-gradient(#6b3b26, #422013);
+  border-radius: 26px 26px 20px 20px;
+  box-shadow:
+    inset 0 3px 0 rgba(255,255,255,0.15),
+    inset 0 -3px 0 rgba(0,0,0,0.35);
+}
+
+/* simple front drip band */
+
+.cake-drip-simple {
+  position: absolute;
+  bottom: 83px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 10px;
+  background: #3a1c12;
+  border-radius: 0 0 18px 18px;
+}
+
+/* candles */
+
+.pixel-candles {
+  position: absolute;
+  bottom: 118px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 18px;
+}
+
+.pixel-candle {
+  width: 10px;
+  height: 30px;
+  background: repeating-linear-gradient(
+    -45deg,
+    #ffffff,
+    #ffffff 4px,
+    #99d6ff 4px,
+    #99d6ff 8px
+  );
+  position: relative;
+  border-radius: 2px;
+}
+
+.pixel-flame {
+  width: 10px;
+  height: 16px;
+  background: linear-gradient(#fff1a8, #ff9f1c, #ff6b00);
+  position: absolute;
+  top: -18px;
+  border-radius: 10px 10px 6px 6px;
+  box-shadow: 0 0 8px rgba(255, 165, 0, 0.9);
+  animation: flicker 0.18s infinite alternate;
+}
+
+@keyframes flicker {
+  from { transform: translateY(0); opacity: 0.7; }
+  to   { transform: translateY(-1px); opacity: 1; }
+}
+
+/* countdown + buttons */
+
+#countdown {
+  font-family: 'Press Start 2P', cursive;
+  color: #4361ee;
+  margin-top: 18px;
+  font-size: 12px;
+}
+
+.buttons-row {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #a0c4ff, #ffc8dd);
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  color: #1d3557;
+  font-size: 13px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.18);
+}
+
+/* modals */
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.modal-box {
+  background: #fff;
+  padding: 24px 20px 20px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.35);
+}
+
+.modal-box h2 {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 16px;
+  color: #ff6392;
+  margin-top: 0;
+}
+
+.letter-text {
+  margin: 16px 0 20px;
+  font-size: 14px;
+  color: #444;
+  white-space: pre-line;
+}
+
+.modal-box button {
+  margin-top: 10px;
+}
+
+audio {
+  width: 100%;
+  margin-top: 10px;
+}
