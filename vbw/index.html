@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Birthday Surprise</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="screen">
+    <div class="window">
+      <div class="titlebar">
+        <div class="title">Birthday.exe</div>
+        <div class="buttons">
+          <span class="red"></span>
+          <span class="yellow"></span>
+          <span class="green"></span>
+        </div>
+      </div>
+
+      <div class="content">
+        <h1>Make a wish</h1>
+        <p>Blow the candles, read the letter, and listen to a tiny voice note.</p>
+
+        <!-- SIMPLE CHOCOLATE CAKE -->
+        <div class="cake">
+          <div class="cake-shadow"></div>
+
+          <div class="cake-plate"></div>
+          <div class="cake-body"></div>
+          <div class="cake-middle"></div>
+          <div class="cake-top"></div>
+          <div class="cake-drip-simple"></div>
+
+          <!-- candles -->
+          <div class="pixel-candles">
+            <div class="pixel-candle"><div class="pixel-flame"></div></div>
+            <div class="pixel-candle"><div class="pixel-flame"></div></div>
+            <div class="pixel-candle"><div class="pixel-flame"></div></div>
+          </div>
+        </div>
+
+        <div id="countdown">Click “Blow Candles”</div>
+
+        <div class="buttons-row">
+          <button onclick="startCountdown()">Blow Candles</button>
+          <button onclick="openLetter()">Open Letter</button>
+          <button onclick="openVoice()">Play Voice</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Letter Modal -->
+  <div id="letterModal" class="modal">
+    <div class="modal-box">
+      <h2>For You 💌</h2>
+      <p class="letter-text">
+        Happy birthday,Jaana.  
+        Thank You for coming into my life. 
+        haan patha hai tere upar bohot athyachar kiye hai mene 
+        aka gussa hona lekin tujhe pasand bhi karthi hun 
+        aur ek sorry pe phigal bhi jaathi hun.
+        haan patha hai main pyaar se kam baath karthi hun
+        par mann ke andar toh tum aankon se jhaank bhi sakthe ho
+        aur tumne mujhe bohot acche se samjha hai. haan iss baar 
+        main aa bhi nahi paayi aur gift bhi nahi de paayi. 
+        par haan main hamesha aapki linda to leo (crime partners)
+        aur carol to vincent rahungi . yaa phir aapki asal zindagi ki 
+
+
+        oki jaanu.
+        
+      
+        <div class=""></div>
+      </p>
+      <button onclick="closeLetter()">Close</button>
+    </div>
+  </div>
+
+  <!-- Voice Modal -->
+  <div id="voiceModal" class="modal">
+    <div class="modal-box">
+      <h2>Little Voice Note</h2>
+      <audio id="voiceAudio" controls>
+        <!-- put your own file here -->
+        <source src="voice.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+      <button onclick="closeVoice()">Close</button>
+    </div>
+  </div>
+
+  <script>
+  let countdownTimer = null;
+  let flamesOn = true;
+
+  function setFlames(show) {
+    const flames = document.querySelectorAll(".pixel-flame");
+    flames.forEach(f => {
+      f.style.display = show ? "block" : "none";
+    });
+    flamesOn = show;
+  }
+
+  function startCountdown() {
+    const countdown = document.getElementById("countdown");
+
+    // if a timer is already running, stop it so we can restart cleanly
+    if (countdownTimer) {
+      clearInterval(countdownTimer);
+      countdownTimer = null;
+    }
+
+    // always relight before starting a new wish
+    setFlames(true);
+    let time = 5;
+    countdown.textContent = "Blow in " + time + "...";
+
+    countdownTimer = setInterval(() => {
+      time--;
+      if (time > 0) {
+        countdown.textContent = "Blow in " + time + "...";
+      } else {
+        clearInterval(countdownTimer);
+        countdownTimer = null;
+
+        // blow out
+        setFlames(false);
+        countdown.textContent = "🎉 WISH GRANTED 🎉";
+
+        // relight after 3 seconds
+        setTimeout(() => {
+          setFlames(true);
+          countdown.textContent = "Make another wish";
+        }, 3000);
+      }
+    }, 1000);
+  }
+
+  function openLetter() {
+    document.getElementById("letterModal").style.display = "flex";
+  }
+
+  function closeLetter() {
+    document.getElementById("letterModal").style.display = "none";
+  }
+
+  function openVoice() {
+    const modal = document.getElementById("voiceModal");
+    const audio = document.getElementById("voiceAudio");
+    modal.style.display = "flex";
+    if (audio) {
+      audio.currentTime = 0;
+      audio.play().catch(() => {});
+    }
+  }
+
+  function closeVoice() {
+    const modal = document.getElementById("voiceModal");
+    const audio = document.getElementById("voiceAudio");
+    modal.style.display = "none";
+    if (audio) audio.pause();
+  }
+</script>
